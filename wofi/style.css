@@ -1,0 +1,25 @@
+/*
+ * Paste this in /home/[Your Username]/.config/wofi/
+ * If the folder doesn't exists please make it with "mkdir ~/.config/wofi"
+ * If the file doesn't exists, Please make it with "touch ~/.config/wofi/style.css"
+ * This configuration file applies to both Wofi app menu and Wofi Emoji menu at the same time
+ */
+
+
+window { /* This is the main app selector window */
+  background-color: #333333; /* This is the main window's background color */
+  color: #ffffff; /* The color of the text, Basically the color of how it will display all your app names, such as Firefox, Gedit etc */
+  border-radius: 15px; /* Less pixies = Sharp, 0px = Square, More pixels = Roundy , This is for the entire menu*/
+  border-style: dashed; /* Dashed is just a long line- You can leave it as is */
+}
+
+#entry:selected { /* The app that you are currently holding/ Selected */
+  background-color: #444444; /* Color of the box */
+  color: #ffffff; /* Color of the text (Only for the selected one) */
+}
+
+#input { /*This is your app search bar */
+  background-color: #262626; /* Background color of the search thingy */
+  color: #ffffff; /* Color of the text */
+}
+

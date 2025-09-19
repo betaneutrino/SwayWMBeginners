@@ -1,0 +1,98 @@
+# HEY USER! Paste this file on /home/[yourusername]/.config/sway/config
+# If the folder sway doesn't exists- please run "mkdir ~/.config/sway/"
+# If the config file doesn't exists- please run "touch ~/.config/sway/config"
+# Go to the directory, And paste this entire file in that new config file you created!
+
+# Set mod key - It can be anything, Mod4 is better known as the "Windows" key- But you can put Ctrl, Shift- Whatever key you want.
+set $mod Mod4
+
+# Open file manager - Put your preferred file manager here, it could be dolphin, nemo, nautilus- Whatever you use. (Optional) If you are unsure, use Nemo-
+# Install it on your system with your package manager and put .... exec nemo, Like that.
+bindsym $mod+f exec [Your preferred File Manager.]
+
+# Open Terminal - Same logic, Put your preferred terminal emulato! it could be Console, GNOME Terminal, St(Suckless Terminal)- Etc. (Optional)If you are unsure,
+# use Kitty-
+# Kitty is barebones and simple- Customized with config files- But its cool by default, Install it with your package manager.
+bindsym $mod+t exec [Your preferred terminal emulator.]
+
+# Open Browser - Your preferred browser, Like chromium, chrome, brave, firefox etc. (Optional) If you are unsure, Go with firefox (Might be preinstalled in your system)
+# If it isnt installed, Install it with your package manager
+bindsym $mod+b exec [Your preferred Browser]
+
+# Close focused window, Basically, it acts like Alt + F4- You can actually change it to "bindsym alt+f4 kill". It tells the window to close, not forcefully close it,
+# like the cross button
+bindsym $mod+q kill
+
+# Restart sway- Restarts SwayWM to apply changes- It isnt the same as logging out, takes only a blink or a second.
+bindsym $mod+r reload
+
+# Exit sway- Exits SwayWM to tty1 or your display manager (Like gdm or sddm), Its the equivalent to logging out.
+bindsym $mod+Shift+e exit
+
+# Launch apps- Must have wofi installed, Install it with your package manager. Its like a start menu- But more like a dropdown menu.
+bindsym $mod+d exec wofi --show drun
+
+# Emoji menu- (Optional), You can delete this line if you are not into using emojis.  Basically you get to use emojis.
+bindsym $mod+period exec wofi-emoji
+ 
+# Minimize Windows - It minimizes the current foucused window.
+bindsym $mod+e move scratchpad 
+
+# Maximize Windows - It launches the window you just minimzed, Pressing it cycles through all the minimizes windows
+bindsym $mod+w scratchpad show; floating disable
+
+# Lock Screen - This is very barebones and optional- You can choose to remove this line if you dont want it. Note that the lock screen doesn't has any clock, Just a
+# barebone lock screen.
+bindsym $mod+l exec swaylock -f -c 000000
+
+
+# Status bar - Basically tells sway that waybar is the default status bar- Its like your KDE Taskbar or GNOME Top bar.
+bar {
+    swaybar_command waybar
+    position top
+}
+
+# Fullscreen screenshot - Takes a fullscreen, All monitors included- screenshot
+bindsym Print exec grim ~/Pictures/Screenshots/screenshot-$(date +'%Y-%m-%d-%H%M%S').png
+
+# Interactive screenshot - Gives you the option to choose what part you wanna screenshot-
+bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +'%Y-%m-%d-%H%M%S').png
+
+
+
+# Touchpad input - Very optional, If you are a PC/ Mouse user, Safely delete this block.
+# You can obtain your touchpads ID From the command "sudo libinput list-devices"
+input "Touchpad_ID" {
+	dwt enabled
+	tap enabled
+	middle_emulation enabled
+	natural_scroll enabled
+}
+
+# Window border - The window border SwayWM Puts, Feel free to put your own colors! Color type: HEX
+
+# Active window - The window you are currently working on
+client.focused          #888888 #2b303b #ffffff #888888
+
+# Previously focused but now inactive - Yeah, I dont get it either- its like unfocused
+client.focused_inactive #2b303b #2b303b #ffffff #2b303b
+
+# Fully unfocused windows - A window you are not currently using
+client.unfocused        #2b303b #2b303b #ffffff #2b303b
+
+# Urgent windows - Never encountered an urgent window- But feel free to customize it too
+client.urgent           #888888 #2b303b #ffffff #888888
+
+# Audio - Very optional, Keep it if you have a laptop / keyboard with in built control buttons
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+
+# Brightness - Same logic as the audio one.
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# Additional Notes,
+# The shortcuts could be anything, Just type it like however you want [First key]+[Second Key]+[Third Key]....[Millionth key]- You get it, Search up online for a button
+# You wanna put. Feel free to modify the shortcuts i have gave to your likings.
