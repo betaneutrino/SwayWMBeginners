@@ -1,0 +1,150 @@
+# == DEFINITIONS ==
+# MOD KEY
+set $mod Mod4
+floating_modifier $mod
+
+# APPS
+set $flmg dolphin
+set $web firefox-esr
+set $text kate /home/sanir/Desktop/prog/
+set $emji wofi-emoji
+set $term kitty
+
+
+# # # # # # # # # # # # # # #
+#                           #
+#      APP KEY BINDS        #
+#                           #
+# # # # # # # # # # # # # # #
+
+# App Launcher
+bindsym $mod+tab exec wofi --show drun
+
+# Emoji menu
+bindsym $mod+period exec wofi-emoji
+
+# Open file manager
+bindsym $mod+f exec $flmg
+
+# Open Terminal
+bindsym $mod+t exec $term
+
+# Open Browser
+bindsym $mod+b exec $web
+
+# Open text editor
+bindsym $mod+k exec $text
+
+
+# # # # # # # # # # # # # # #
+#                           #
+#    WINDOW OPERATIONS      #
+#                           #
+# # # # # # # # # # # # # # #
+
+# Close focused window
+bindsym $mod+q kill
+
+# Minimize Windows
+bindsym $mod+e move scratchpad
+
+# Maximize Windows
+bindsym $mod+w scratchpad show; floating disable
+
+# == Screenshots ==
+
+# Fullscreen screenshot
+bindsym Print exec grim ~/Pictures/Screenshots/screenshot-$(date +'%Y-%m-%d-%H%M%S').png
+
+# Interactive screenshot
+bindsym $mod+s exec grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +'%Y-%m-%d-%H%M%S').png
+
+# == Appearance ==
+
+# Window border - Color type: HEX
+#client.focused <border> <background> <text> <indicator> <child_border>
+
+# Active window
+client.focused          #ffe417 #2b303b #ddd23d #888888 #ffe417
+
+# Previously focused but now inactive
+client.focused_inactive #b4b400 #2b303b #958f4c #2b303b #b4b400
+
+# Fully unfocused windows
+client.unfocused        #b4b400 #2b303b #958f4c #2b303b #b4b400
+
+# Urgent windows
+client.urgent           #ff930e #2b303b #bebebe #888888 #ff930e
+
+# == Virtual Desktops ==
+
+# # # # # # # # # # # # # # #
+#                           #
+#      SYSTEM ACTIONS       #
+#                           #
+# # # # # # # # # # # # # # #
+
+# Refresh sway config
+bindsym $mod+Shift+r reload
+
+# Exit sway
+bindsym $mod+Shift+e exit
+
+# Lock screen
+bindsym $mod+l exec swaylock -f -c 000000
+bindsym Scroll_Lock exec swaylock -f -c 000000
+
+# Wallpaper
+exec_always swaybg -i /home/sanir/Pictures/Wallpapers/wp13055921-pompompurin-pc-wallpapers.jpg -m fill
+
+
+# # # # # # # # # # # # # # #
+#                           #
+#      SYSTEM STUFF         #
+#                           #
+# # # # # # # # # # # # # # #
+
+# STATUS BAR
+bar {
+    swaybar_command waybar
+    position top
+}
+
+# TOUCHPAD INPUT
+input type:touchpad {
+	dwt enabled
+	tap enabled
+	middle_emulation enabled
+	natural_scroll enabled
+}
+
+# AUDIO KEY BINDS
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+
+# BRIGHTNESS KEY BINDS
+bindsym XF86MonBrightnessDown exec sh -c 'brightnessctl set 5%- && ddcutil setvcp 10 - 5'
+bindsym XF86MonBrightnessUp exec sh -c 'brightnessctl set +5% && ddcutil setvcp 10 + 5'
+
+
+# KEYBOARD LAYOUT
+input * {
+    xkb_layout de
+}
+
+# DISPLAY LAYOUT
+output HDMI-A-1 pos 0 0
+output eDP-1 pos 1920 300
+
+# # # # # # # # # # # # # # #
+#                           #
+#         Autostart         #
+#                           #
+# # # # # # # # # # # # # # #
+
+exec /opt/clss/ibus.sh
+exec protonvpn-app
+exec megasync
+

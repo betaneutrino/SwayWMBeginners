@@ -1,0 +1,80 @@
+/* HELLO USER!!!
+ * Paste this file in /home/[Your Username]/.config/waybar/
+ * If the folder doesn't exists, please make it with "mkdir ~/.config/waybar"
+ * If the file doesn't exists, please meake it with "touch ~/.config/style.css"
+ */
+
+
+
+/* ===========================
+   Global Styles
+=========================== */
+* {
+    font-family: 'LiberationMono', sans-serif; /* Put your preffered font , LiberationMono looks cool to me, But feel free to change it to your liking. */
+    font-size: 15px; /* Change the size, 15px is optimal, Make it bigger/smaller according to your needs  */
+}
+
+/* ===========================
+   Window/Bar Styles
+   This is waybar itself (Not any module)
+=========================== */
+window#waybar {
+    background-color: rgba(235, 233, 117, 0.8); /* The background/ base of the bar, The fourth value is opacity, Choose it to your likins, its in (r,g,b,a) format */
+    border-bottom: 2px solid rgba(222, 215, 93, 0.9);  /* This is the border of te waybar- Could leave it as-is */
+    color: #ffffff; /* Color of text, basically, ON the bar */
+}
+
+/* ===========================
+   Button Styles
+   No idea what this part does- Scroll to bottom, This part brings no actual changes tho
+=========================== */
+button{
+    background-color: #444444;
+    border: none;
+    border-radius: 3px;
+    padding: 0px;
+    margin: 0px;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+button:hover {
+    background-color: #55511f;
+}
+
+/* ===========================
+   Workspace Buttons
+=========================== */
+#workspaces button.focused {
+    background-color: #bab12f;
+}
+/* Meh, No idea what these two does, Leave them as is i guess */
+#workspaces button.urgent {
+    background-color: #c58820;
+}
+
+/* ===========================
+   Module Styles
+   If you have any extra module , Drop the name here
+   Optional- But you can put the module "window" if you want your window name to have borders for some reason
+=========================== */
+#idle_inhibitor,
+#button,
+#language,
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#power-profiles-daemon,
+#scratchpad,
+#window{
+    padding: 5px;
+    background-color: #b9ac1e; /*Color of each module buttons, Like the color of the button itself*/
+    border-radius: 5px; /* Less / 0 Pixels = Sharp Edge, More pixels  = Rounded edges, Basically box buttons or rounded buttons */
+    margin: 0px; /*You can ignore this */
+}
+
